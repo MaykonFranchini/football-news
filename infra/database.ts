@@ -1,27 +1,15 @@
-import { Client } from 'pg'
+import { PrismaClient } from '@prisma/client'
 
-type QueryObject = {
-  text: string,
-  values: (string| undefined)[],
+const prismaClientSingleton = () => {
+  return new PrismaClient()
 }
 
-export default async function query(queryObject: QueryObject | string) {
-  const client = new Client({
-    host: process.env.POSTGRES_HOST,
-    port: Number(process.env.POSTGRES_PORT),
-    user: process.env.POSTGRES_USER,
-    database: process.env.POSTGRES_DB,
-    password: process.env.POSTGRES_PASSWORD,
-  })
-
-  await client.connect()
-
-  try {
-    const response = await client.query(queryObject)
-    return response
-  } catch (err) {
-    console.log(err)
-  } finally {
-    await client.end()
-  }
+declare global {
+  var prisma: undefined | ReturnType<typeof prismaClientSingleton>
 }
+
+const prisma = globalThis.prisma ?? prismaClientSingleton()
+
+export default prisma
+
+if (process.env.NODE_ENV !== 'production') globalThis.prisma = prisma

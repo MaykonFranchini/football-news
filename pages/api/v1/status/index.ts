@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import  query  from '@/infra/database'
+import  prisma  from '@/infra/database'
 
 export type StatusResponse = {
   updated_at: string,
@@ -13,20 +13,28 @@ export type StatusResponse = {
 
 }
 
+type databaseVersion = {
+  server_version: string
+}
+
+type maxConnections = {
+  max_connections: string
+}
+type openConnections = {
+  count: number
+}
+
 export default async function status(req: NextApiRequest, res: NextApiResponse<StatusResponse>) {
 
   const databaseName = process.env.POSTGRES_DB
 
-  const dbVersion = await query('SHOW server_version;')
-  const maxConnections = await query('SHOW max_connections;')
-  const openedConnections = await query({
-    text: "SELECT count(*)::int FROM pg_stat_activity WHERE datname = $1;", 
-    values: [databaseName]
-  })
+  const dbVersion = await prisma.$queryRaw<databaseVersion[]>`SHOW server_version;`
+  const maxConnections = await prisma.$queryRaw<maxConnections[]>`SHOW max_connections;`
+  const openedConnections = await prisma.$queryRaw<openConnections[]>`SELECT count(*)::int FROM pg_stat_activity WHERE datname = ${databaseName};`
 
-  const dbVersionFormatted = dbVersion?.rows[0].server_version
-  const dbMaxConnectionsFormatted = Number(maxConnections?.rows[0].max_connections)
-  const dbOpenedConnectionsFormatted = openedConnections?.rows[0].count
+  const dbVersionFormatted = dbVersion[0].server_version
+  const dbMaxConnectionsFormatted = Number(maxConnections[0].max_connections)
+  const dbOpenedConnectionsFormatted = openedConnections[0].count
   
   res.status(200).json({ 
     updated_at: new Date().toISOString(),
