@@ -16,7 +16,7 @@ model Club {
   name       String
   source_url String
   badge_url   String
-  location   String @default(value: "Brasil")
+  division   String @default(value: "Brasil")
   fans       User[]
   News       News[]
 
