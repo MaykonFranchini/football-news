@@ -23,8 +23,6 @@ export default async function updateNews(req: NextApiRequest, res: NextApiRespon
     }
   }
 
-  const news = await prisma.news.findMany()
-
   res.status(201)
 
 }
