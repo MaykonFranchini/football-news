@@ -18,7 +18,7 @@ export const topNews = async() =>{
 
     news.push({
       title,
-      link: 'https://onefootball.com/pt-br' + link,
+      link: 'https://onefootball.com' + link,
       img_url,
       source_img,
       source_name
