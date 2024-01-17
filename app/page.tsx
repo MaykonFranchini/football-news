@@ -12,23 +12,24 @@ export type News = {
 }
 
 export default async function Home() {
-  const res = await fetch('https://football-news-4e3nc7uh5-maykonfranchini.vercel.app/api/v1/topnews')
-  const resBody = await res.json()
-  const {newsList} = resBody
-  const bannerNews = newsList[0]
-  const newsListCard = newsList.toSpliced(0,1)
+  // const res = await fetch('https://football-news-4e3nc7uh5-maykonfranchini.vercel.app/api/v1/topnews')
+  // const resBody = await res.json()
+  // const {newsList} = resBody
+  // const bannerNews = newsList[0]
+  // const newsListCard = newsList.toSpliced(0,1)
 
   return (
-    <>
-      <Header/>
-      <Banner {...bannerNews}/>
-      <div>
-        <div className='mx-auto flex-wrap w-full justify-center px-10 flex gap-4'>
-          {newsListCard.map((news: News) => {
-            return <NewsCard {...news} key={news.title}/>
-          })}
-        </div>
-      </div>
-    </>
+    // <>
+    //   <Header/>
+    //   <Banner {...bannerNews}/>
+    //   <div>
+    //     <div className='mx-auto flex-wrap w-full justify-center px-10 flex gap-4'>
+    //       {newsListCard.map((news: News) => {
+    //         return <NewsCard {...news} key={news.title}/>
+    //       })}
+    //     </div>
+    //   </div>
+    // </>
+    <h1>Football News</h1>
   )
 }
