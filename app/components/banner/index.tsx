@@ -3,7 +3,7 @@ import { News } from "@/app/page";
 export function Banner(news :News) {
   return(
     <a href={news.link}>
-      <div className="flex w-full rounded-xl lg:flex-row flex-col items-center gap-2 my-4 mx-auto px-10">
+      <div className="flex w-full lg:flex-row flex-col items-center gap-2 mt-4 mx-auto px-10">
         <img src={news.img_url}
         alt={news.title}
         className="lg:w-1/2"
