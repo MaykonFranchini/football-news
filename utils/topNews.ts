@@ -32,11 +32,15 @@ export const topNews = async() =>{
     const source_img = $(this).find('.NewsTeaser_teaser__publisherNameLogo__cuYQe').find('img').attr('src')
     const source_name = $(this).find('.NewsTeaser_teaser__publisherName__sm1ZN').text()
     
+    const newUrl = img_url!.split('w=64&h=64')
+    
+    const resizedImgUrl = `${newUrl[0]}w=300&h=300${newUrl[1]}`
+    
 
     news.push({
       title,
-      link: 'https://onefootball.com/pt-br' + link,
-      img_url,
+      link: 'https://onefootball.com' + link,
+      img_url: resizedImgUrl,
       source_img,
       source_name
     })
