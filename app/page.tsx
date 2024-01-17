@@ -16,7 +16,7 @@ export default async function Home() {
   const resBody = await res.json()
   const {newsList} = resBody
   const bannerNews = newsList[0]
-  const newsListCard = newsList.toSpliced(0,1)
+  const newsListCard = newsList.slice(1)
 
   return (
     <>
