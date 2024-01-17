@@ -12,7 +12,7 @@ export type News = {
 }
 
 export default async function Home() {
-  const res = await fetch('https://football-news-lime.vercel.app/api/v1/topnews')
+  const res = await fetch(`${process.env.BASE_URL}/api/v1/topnews`)
   const resBody = await res.json()
   const {newsList} = resBody
   const bannerNews = newsList[0]
@@ -22,7 +22,7 @@ export default async function Home() {
     <>
       <Header/>
       <Banner {...bannerNews}/>
-      <div>
+      <div className='bg-slate-100 pt-7'>
         <div className='mx-auto flex-wrap w-full justify-center px-10 flex gap-4'>
           {newsListCard.map((news: News) => {
             return <NewsCard {...news} key={news.title}/>
