@@ -12,7 +12,7 @@ export type News = {
 }
 
 export default async function Home() {
-  const res = await fetch(`${process.env.BASE_URL}/api/v1/topnews`)
+  const res = await fetch(`${process.env.BASE_URL}/api/v1/topnews`, { next: { revalidate: 3600 } })
   const resBody = await res.json()
   const {newsList} = resBody
   const bannerNews = newsList[0]
