@@ -3,7 +3,7 @@ import Link from 'next/link'
 import logoImg from '@/public/logo.png'
 import { Salsa } from 'next/font/google'
 
-const logoFont = Salsa({
+export const logoFont = Salsa({
   subsets: ['latin'],
   weight: "400",
 })
