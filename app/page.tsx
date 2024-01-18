@@ -1,5 +1,5 @@
-import { Header } from '@/app/components/header'
 import { Banner } from './components/banner'
+import { Header } from './components/header'
 import { NewsCard } from './components/newsCard'
 
 export type News = {
