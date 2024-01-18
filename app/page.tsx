@@ -23,7 +23,7 @@ export default async function Home() {
       <Header/>
       <Banner {...bannerNews}/>
       <div className='bg-slate-100 pt-7'>
-        <div className='mx-auto flex-wrap w-full justify-center px-10 flex gap-4'>
+        <div className='mx-auto mb-4 flex-wrap w-full justify-center px-10 flex gap-4'>
           {newsListCard.map((news: News) => {
             return <NewsCard {...news} key={news.title}/>
           })}
