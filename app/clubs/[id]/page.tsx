@@ -1,6 +1,7 @@
+import { NewsCard } from '@/app/components/newsCard'
 import prisma from '@/infra/database'
 import { latestsNews } from '@/utils/getNews'
-import { News } from '@prisma/client'
+import { News } from '@/app/page'
 
 export default async function Club({ params }: {params: {id: string}}) {
   const club = await prisma.club.findFirst({
@@ -17,9 +18,9 @@ export default async function Club({ params }: {params: {id: string}}) {
   const newsList = await latestsNews(club.source_url)
   
   return (
-    <div>
-      {newsList.map((news : News) => {
-        return <p key={news.title}>{news.title}</p>
+    <div className='mx-auto mb-4 bg-slate-100 py-4 flex-wrap w-full justify-center px-10 flex gap-4'>
+      {newsList.map((news: News) => {
+        return <NewsCard {...news} key={news.title}/>
       })}
     </div>
   )

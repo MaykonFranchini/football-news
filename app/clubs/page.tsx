@@ -1,6 +1,5 @@
 import prisma from '@/infra/database'
 import { ClubsCard } from '../components/clubsCard'
-import { Header } from '../components/header'
 import { logoFont } from '../components/header/logo'
 
 export default async function Clubs() {
@@ -19,7 +18,6 @@ export default async function Clubs() {
   
   return (
     <>
-      <Header/>
       <h1 className={`${logoFont.className} text-2xl text-center mt-6 text-blue-900`}>Clubs</h1>
 
       <div className='mt-10 w-full flex flex-wrap justify-center gap-5'>

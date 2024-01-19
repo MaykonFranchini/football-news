@@ -1,5 +1,4 @@
 import { Banner } from './components/banner'
-import { Header } from './components/header'
 import { NewsCard } from './components/newsCard'
 
 export type News = {
@@ -20,7 +19,6 @@ export default async function Home() {
 
   return (
     <>
-      <Header/>
       <Banner {...bannerNews}/>
       <div className='bg-slate-100 pt-7'>
         <div className='mx-auto mb-4 flex-wrap w-full justify-center px-10 flex gap-4'>

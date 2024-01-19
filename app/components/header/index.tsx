@@ -6,7 +6,8 @@ export function Header() {
   return(
     <header className='w-100 gap-6 p-3 h-20 flex border-b-2 border-gray-200'>
       <Logo/>
-      <div className='flex items-center'>
+      <div className='flex items-center gap-4'>
+        <Link href='/' className={`${logoFont.className} text-blue-800 text-lg hover:text-blue-950`}>home</Link>
         <Link href='/clubs' className={`${logoFont.className} text-blue-800 text-lg hover:text-blue-950`}>clubs</Link>
       </div>
     </header>
