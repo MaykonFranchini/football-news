@@ -1,6 +1,5 @@
 import { NewsCard } from '@/app/components/newsCard'
 import prisma from '@/infra/database'
-import { latestsNews } from '@/utils/getNews'
 import { News } from '@/app/page'
 
 export default async function Club({ params }: {params: {id: string}}) {

@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { latestsNews } from "@/utils/getNews";
 import prisma from '@/infra/database'
 
-export default async function clubNews(req: NextApiRequest, res: NextApiResponse) {
+export default async function clubNews(req, res) {
   const clubId = req.query.id
 
   const club = await prisma.club.findFirst({
