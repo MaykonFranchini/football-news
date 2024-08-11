@@ -14,8 +14,9 @@ export default async function Club({ params }: {params: {id: string}}) {
     console.log(`not found - ${params.id}`)
     return
   }
-
-  const newsList = await latestsNews(club.source_url)
+  const res = await fetch(`${process.env.BASE_URL}/api/v1/clubnews?id=${club.id}`, { next: { revalidate: 3600 } })
+  const resBody = await res.json()
+  const {newsList} = resBody
   
   return (
     <div className='mx-auto mb-4 bg-slate-100 py-4 flex-wrap w-full justify-center px-10 flex gap-4'>
