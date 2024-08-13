@@ -20,7 +20,7 @@ export default async function Club({ params }: {params: {id: string}}) {
 
   return (
     <>
-      <div className={ `${club.bg_color ||'bg-red-900' } w-full h-10`}>
+      <div className= 'bg-red-900 w-full h-10'>
         <div className='flex items-center h-full justify-center align-s gap-2'>
           <Image className="max-w-full max-h-full" width={25} height={25} src={club.badge_url} alt={club.name} />
           <h1 className='text-white'>{club.name.toLocaleUpperCase()}</h1>
