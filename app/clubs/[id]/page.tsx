@@ -17,10 +17,10 @@ export default async function Club({ params }: {params: {id: string}}) {
   const res = await fetch(`${process.env.BASE_URL}/api/v1/clubnews?id=${club.id}`, { next: { revalidate: 3600 } })
   const resBody = await res.json()
   const {newsList} = resBody
-  
+
   return (
     <>
-      <div className={ club.bg_color + ' w-full h-10'}>
+      <div className={ `${club.bg_color ||'bg-red-900' } w-full h-10`}>
         <div className='flex items-center h-full justify-center align-s gap-2'>
           <Image className="max-w-full max-h-full" width={25} height={25} src={club.badge_url} alt={club.name} />
           <h1 className='text-white'>{club.name.toLocaleUpperCase()}</h1>
