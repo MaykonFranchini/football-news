@@ -1,6 +1,7 @@
 import { NewsCard } from '@/app/components/newsCard'
 import prisma from '@/infra/database'
 import { News } from '@/app/page'
+import Image from "next/image"
 
 export default async function Club({ params }: {params: {id: string}}) {
   const club = await prisma.club.findFirst({
@@ -18,11 +19,19 @@ export default async function Club({ params }: {params: {id: string}}) {
   const {newsList} = resBody
   
   return (
-    <div className='mx-auto mb-4 bg-slate-100 py-4 flex-wrap w-full justify-center px-10 flex gap-4'>
-      {newsList.map((news: News) => {
-        return <NewsCard {...news} key={news.title}/>
-      })}
-    </div>
+    <>
+      <div className={ club.bg_color + ' w-full h-10'}>
+        <div className='flex items-center h-full justify-center align-s gap-2'>
+          <Image className="max-w-full max-h-full" width={25} height={25} src={club.badge_url} alt={club.name} />
+          <h1 className='text-white'>{club.name.toLocaleUpperCase()}</h1>
+        </div>
+      </div>
+      <div className='mx-auto mb-4 bg-slate-100 py-4 flex-wrap w-full justify-center px-10 flex gap-4'>
+        {newsList.map((news: News) => {
+          return <NewsCard {...news} key={news.title}/>
+        })}
+      </div>
+    </>
   )
 
 }
