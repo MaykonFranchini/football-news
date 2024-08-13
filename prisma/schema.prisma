@@ -17,6 +17,7 @@ model Club {
   name       String
   source_url String
   badge_url  String
+  bg_color   String @default("bg-red-900")
   division   String @default(value: "Brasil")
   fans       User[]
   News       News[]
