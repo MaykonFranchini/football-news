@@ -1,7 +1,6 @@
 import { PrismaClient } from '@prisma/client'
-import clubs from '../data'
-
-const prisma = new PrismaClient()
+import clubs from '../data.js'
+import prisma from '../infra/database'
 
 async function main() {
   await prisma.club.deleteMany()
@@ -14,7 +13,8 @@ async function main() {
           name: club.name,
           source_url: club.sourceUrl,
           badge_url: club.badgeUrl,
-          division: club.division
+          division: club.division,
+          next_match_url: club.nextMatchUrl
         }
       })
       await prisma.$disconnect()

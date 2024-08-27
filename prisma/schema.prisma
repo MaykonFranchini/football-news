@@ -14,13 +14,14 @@ datasource db {
 model Club {
   id String @id @default(uuid())
 
-  name       String
-  source_url String
-  badge_url  String
-  bg_color   String @default("bg-red-900")
-  division   String @default(value: "Brasil")
-  fans       User[]
-  News       News[]
+  name           String
+  source_url     String
+  next_match_url String @default(value: "")
+  badge_url      String
+  bg_color       String @default("bg-red-900")
+  division       String @default(value: "Brasil")
+  fans           User[]
+  News           News[]
 
   @@map("clubs")
 }
