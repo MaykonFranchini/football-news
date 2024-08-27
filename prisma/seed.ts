@@ -14,7 +14,7 @@ async function main() {
           source_url: club.sourceUrl,
           badge_url: club.badgeUrl,
           division: club.division,
-          next_match_url: club.nextMatchUrl
+          // next_match_url: club.nextMatchUrl
         }
       })
       await prisma.$disconnect()
