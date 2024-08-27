@@ -2,9 +2,7 @@
   "name": "football-news",
   "version": "0.1.0",
   "private": true,
-  "prisma": {
-    "seed": "dotenv -e .env.development -- ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
-  },
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "services:up": "docker compose -f infra/compose.yaml up -d",
