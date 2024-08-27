@@ -7,7 +7,7 @@ export default async function clubNews(req: NextApiRequest, res: NextApiResponse
   console.log(req.method)
   if(req.method === 'POST') {
     const clubsList = req.body.clubs
-    await prisma.club.deleteMany()
+    // await prisma.club.deleteMany()
 
   clubsList.forEach(async (club:any)=> {
     try {
